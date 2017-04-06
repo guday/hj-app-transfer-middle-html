@@ -10,9 +10,9 @@
     <ion-content class="has-header" has-bouncing="true">
         <div class="ot-box" style="width: 120px;" ng-click="onClickWeBank()">
             <div>微众银行</div>
-            <div>{{vm.nativeVersion}}{{vm.devHackInfo}}({{vm.H5Version}})</div>
+            <div>{{nativeVersion}}{{devHackInfo}}({{H5Version}})</div>
         </div>
-        <div style="text-align: center;" ng-if="isInternalVersion">{{vm.internalVersionDesc}}</div>
+        <div style="text-align: center;" ng-if="isInternalVersion">{{internalVersionDesc}}</div>
 
         <ul class="set-list s-mt-slim">
             <li ng-click="onClickScore()" ng-if="showScore"><span class="a">去评分</span></li>
@@ -23,12 +23,12 @@
             <!--<li ng-click="onClickIntroduce()" ><span class="a">微众介绍</span></li>-->
             <!--<li ng-click="onClickCheckUpdate()" ng-if="showCheckUpdate" ng-class="data.itemClass"><span class="a">{{data.updateTip}}</span></li>-->
             <!--<li ng-click="onClickAdvice()" ng-if="showAdvice" class="px-b"><span class="a">欢迎页</span></li>-->
-            <li ng-click="onClickCheckUpdate()" ng-if="showCheckUpdate" ng-class="data.itemClass"><span class="a">版本更新</span><span class="b">{{vm.data.updateTip}}</span><span ng-if="showNew" class="c">NEW</span></li>
+            <li ng-click="onClickCheckUpdate()" ng-if="showCheckUpdate" ng-class="data.itemClass"><span class="a">版本更新</span><span class="b">{{data.updateTip}}</span><span ng-if="showNew" class="c">NEW</span></li>
 
         </ul>
 
         <div ng-repeat="info in data.traceLog">
-            <span style="font-size:10px">{{vm.info}}</span>
+            <span style="font-size:10px">{{info}}</span>
         </div>
     </ion-content>
     <p class="ot-t">
@@ -39,4 +39,749 @@
         </span>
     </p>
 </div>
+</body></html>�额为5000元</dd>
+                </dl>
+            </div>
+
+            <div class="pay-channel" ng-if="data.way == 3">
+                <div class="pay-channel-wrap ui-px-a">
+                    <h2 class="title">在支持中国银联支付的购物网站中<br>选择<i class="yl"></i></h2>
+                    <p class="sm s-gray">输入微众卡号及微众交易密码即可支付</p>
+                    <img src="../../www/img/pay/pay-channel-yl.png" class="ad-yl">
+                </div>
+                <dl class="tip-wrap ui-px-a">
+                    <dt>使用提示</dt>
+                    <dd>1.支付方式选择中国银联或银联在线支付</dd>
+                    <dd>2.输入微众卡号</dd>
+                    <dd>3.填写短信验证码和身份证</dd>
+                </dl>
+                <dl class="explain-wrap">
+                    <dt class="a">扣款说明</dt>
+                    <dd>当您使用We支付时，首先扣取您微众卡上的余额，若微众卡余额不足将会使用活期+进行支付。</dd>
+                </dl>
+                <dl class="explain-wrap">
+                    <dt class="b">限额说明</dt>
+                    <dd>消费单日累计限额5000元</dd>
+                </dl>
+            </div>
+
+            <div class="pay-channel" ng-if="data.way == 4">
+                <div class="pay-channel-wrap ui-px-a">
+                    <h2 class="title">将微众卡添加到Apple Wallet</h2>
+                    <p class="sm s-gray">在有支持Apple Pay的地方使用活期+消费</p>
+                    <img src="../../www/img/pay/pay-channel-apple.png" class="ad-apple">
+                    <p class="s-fz12 s-bblue pdb20" ng-click="func.onClickAppleDetail()">使用说明</p>
+                </div>
+                <dl class="tip-wrap">
+                    <dt>添加方法</dt>
+                    <dd>1.打开苹果设备的Wallet应用</dd>
+                    <dd>2.轻点右上角的加号图标</dd>
+                    <dd>3.选择手动输入银行卡信息</dd>
+                    <dd>4.输入您的姓名和微众卡号即可成功添加</dd>
+                </dl>
+            </div>
+
+            <div class="pay-channel" ng-if="data.way == 5">
+                <div class="ct-wrap ui-px-a" style="background-color:#fff;margin:0;padding-bottom:30px;">
+                    <h2 class="ct-title">在支持京东支付购物网站中<br>选择<i class="jd"></i></h2>
+                </div>
+                <dl class="explain-wrap">
+                    <dt class="c">使用步骤</dt>
+                    <dd>1.支付方式选择京东支付<i class="jd"></i></dd>
+                    <dd>2.输入微众卡号</dd>
+                    <dd>3.输入银行预留手机号</dd>
+                    <dd>4.输入短信验证码</dd>
+                    <dd>5.输入京东支付密码</dd>
+                </dl>
+                <dl class="explain-wrap">
+                    <dt class="a">扣款说明</dt>
+                    <dd>当您使用We支付时，首先扣取您微众卡上的余额，若微众卡余额不足将会使用活期+进行支付。</dd>
+                </dl>
+                <dl class="explain-wrap">
+                    <dt class="b">限额说明</dt>
+                    <dd>消费单日累计限额5,000元</dd>
+                </dl>
+                <div style="height:20px;"></div>
+            </div>
+
+            <div class="pay-channel" ng-if="data.way == 6">
+                <div class="ct-wrap ui-px-a">
+                    <h2 class="ct-title">可以使用本设备带有<br><i class="apple"></i>标示的地方支付</h2>
+                    <img src="../../www/img/pay/ct-1.jpg" class="ct-img">
+                    <p class="ct-wd">店内使用iPhone支付</p>
+                    <img src="../../www/img/pay/ct-2.jpg" class="ct-img">
+                    <p class="ct-wd">APP内使用iPhone支付</p>
+                </div>
+                <dl class="explain-wrap">
+                    <dt class="a">扣款说明</dt>
+                    <dd>当您使用We支付时，首先扣取您微众卡上的余额，若微众卡余额不足将会使用活期+进行支付。</dd>
+                </dl>
+                <dl class="explain-wrap">
+                    <dt class="b">限额说明</dt>
+                    <dd>消费单日累计限额5,000元</dd>
+                </dl>
+                <div style="height:20px;"></div>
+            </div>
+        </ion-content>
+    </div>
+</ion-view></body></html>span>
+                            </div>
+                        </div>
+                        <div class="d-cell flex">
+                            <div class="s-cell item yl ui-px-b ui-px-r" ng-click="func.onClickUniPay()">
+                                <span><i></i><em>银联在线</em></span>
+                            </div>
+                            <div class="s-cell item wx ui-px-b">
+                                <span><i></i><em>微信支付</em><em class="e">敬请期待</em></span>
+                            </div>
+                        </div>
+                        <div class="d-cell flex">
+                            <div class="s-cell item qq ui-px-b ui-px-r">
+                                <span><i></i><em>QQ钱包</em><em class="e">敬请期待</em></span>
+                            </div>
+                            <div class="s-cell item ui-px-b">
+                                <span><i></i><em></em></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ios -->
+                    <div ng-if="data.showApplePay">
+                        <div class="d-cell flex">
+                            <div class="s-cell item jd ui-px-r" ng-click="func.onClickJDPay()">
+                                <span><i></i><em>京东支付</em></span>
+                            </div>
+                            <div class="s-cell item yl" ng-click="func.onClickUniPay()">
+                                <span><i></i><em>银联在线</em></span>
+                            </div>
+                        </div>
+                        <div class="d-cell flex">
+                            <div class="s-cell item wx ui-px-b ui-px-r">
+                                <span><i></i><em>微信支付</em><em class="e">敬请期待</em></span>
+                            </div>
+                            <div class="s-cell item qq ui-px-b">
+                                <span><i></i><em>QQ钱包</em><em class="e">敬请期待</em></span>
+                            </div>
+                        </div>
+                        <div class="d-cell flex">
+                            <div class="s-cell item apple ui-px-b ui-px-r">
+                                <span><i></i><em>Apple Pay</em><em class="e">敬请期待</em></span>
+                            </div>
+                            <div class="s-cell item ui-px-b">
+                                <span><i></i><em></em></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<ul class="pay-way-list ui-px">-->
+                    <!--<li class="wx ui-px-r" ng-click="func.onClickOpenWX()"><i></i><p>微信支付</p></li>-->
+                    <!--<li class="qq" ng-click="func.onClickOpenQQ()"><i></i><p>QQ钱包</p></li>-->
+                    <!--<li class="yl ui-px-b ui-px-r" ng-click="func.onClickUniPay()"><i></i><p>银联在线</p></li>-->
+                    <!--<li class="sf ui-px-b" ng-if="data.showHCEPay" ng-click="func.onClickQuickPay()"><i></i><p>We闪付</p></li>-->
+                    <!--<li class="apple ui-px-b" ng-if="data.showApplePay && data.isStrong" ng-click="func.onClickApplePay()"><i></i><p>Apple Pay</p></li>-->
+                    <!--<li class="apple off ui-px-b" ng-if="data.showApplePay && !data.isStrong"><p style="line-height:20px;padding-top:0;">更多精彩<br>敬请期待</p></li>-->
+                <!--</ul>-->
+            </div>
+        </ion-content>
+
+        <ion-footer-bar>
+            <p class="bt-wd s-bblue s-fz12" ng-click="func.clickOpenFAQ()">使用活期+消费支付有什么好处？</p>
+        </ion-footer-bar>
+    </div>
+    <div slider-up-confirm="" slider-up-confirm-option="data.sliderUpConfirmOption"></div>
+</ion-view></body></html>><i class="p-c-blue">{{card.bankName}}</i> {{card.number|abridgeAccountNumber}}
+                        <i class="wecard-icon" ng-if="card.isValidWeCard"></i>
+                        <i class="wecard-icon off" ng-if="!card.isValidWeCard &amp;&amp; card.isWeCard"></i>
+                        <span class="ui-small-label" ng-if="card.remark.length > 0">{{card.remark}}</span>
+                    </dd>
+                    <dd class="allow-enter p-c-lgray px-a" ng-repeat="card in data.regCardList" ng-click="onClickViewCardInfoBtn(card, true)">
+                        <img ng-src="{{card.bankImg1}}" alt=""><i class="p-c-blue">{{card.bankName}}</i> {{card.number|abridgeAccountNumber}}
+                        <div class="text">待汇款</div>
+                    </dd>
+                </dl>
+                <div style="height:20px;"></div>
+            </div>
+        </ion-content>
+
+
+        <div class="main-nav-wrap">
+            <ul class="main-nav flex">
+                <li class="item i-a" ng-click="func.onClickMainTab(1)">总览</li>
+                <li class="item i-b" ng-click="func.onClickMainTab(2)">理财</li>
+                <li class="item i-c" ng-click="func.onClickMainTab(4)">投资</li>
+                <li class="item i-d i-on">转账</li>
+            </ul>
+        </div>
+    </div>
+
+    <loading show-loading="data.showLoading"></loading>
+    <div ng-if="showBigBanner" compile="bigBannerHtml"></div>
+</ion-view></body></html>recvAccountData.accountType == data.ACCOUNT_TYPE.FRIENDS">
+                <p class="title">好友姓名</p>
+                <i class="s-blue">{{data.recvAccountData.cardInfo.userName}}</i>
+            </dd>
+            <dd class="row-item trans-fixed" ng-if="data.recvAccountData.accountType == data.ACCOUNT_TYPE.OTHER_BANK_CARD">
+                <p class="title">收款人</p>
+                <i class="s-blue">{{data.recvAccountData.cardInfo.userName}}</i>
+            </dd>
+            <dd class="row-item ui-center-justify s-pr25 ui-px-b" ng-if="data.recvAccountData.accountType == data.ACCOUNT_TYPE.OTHER_BANK_CARD">
+                <p class="title">收款卡号</p>
+                <i class="s-blue">{{data.recvAccountData.cardInfo.cardNo | splitAccountNumber}}</i>
+            </dd>
+            <dd class="row-item ui-center-justify s-pr25 ui-px-b" ng-if="data.recvAccountData.accountType == data.ACCOUNT_TYPE.OTHER_BANK_CARD ||
+                                                                             data.recvAccountData.accountType == data.ACCOUNT_TYPE.FRIENDS">
+                <p class="title">收款银行</p>
+                <i class="s-blue">{{data.recvAccountData.cardInfo.bankName}}</i>
+            </dd>
+            <dd class="row-item ui-center-justify s-pr25 ui-px-b">
+                <p class="title">付款</p>
+                <i class="item right" ng-if="data.payAccountData.accountType == data.ACCOUNT_TYPE.WEBANK_CARD">
+                    微众卡{{data.webank_card_no | abridgeAccountNumber}}
+                </i>
+                <i class="ui-hqj-icon" ng-if="data.payAccountData.accountType == data.ACCOUNT_TYPE.CURRENT_PLUS"></i>
+                <i class="wecard-plus-icon" ng-if="data.payAccountData.accountType == data.ACCOUNT_TYPE.WE_CARD"></i>
+                <i class="item right" ng-if="data.payAccountData.accountType == data.ACCOUNT_TYPE.WEBANK_CARD_FIRST">先扣微众卡再扣活期+</i>
+            </dd>
+            <dd class="row-item ui-center-justify s-pr25 ui-px-b">
+                <p class="title">金额</p>
+                <i class="s-orange">{{data.amount}}元</i>
+            </dd>
+            <dd class="px-b trans-blew" ng-if="data.showTransWarningTips">
+                <p class="">您今日累计转账金额超过30万元，请核实收款方信息，注意资金安全</p>
+            </dd>
+            <dd class="{{data.transOutAckBtnClass}}"><button class="p-btn p-btn-block" ng-click="func.onClickConfirmTransOut()">确认转出</button></dd>
+        </dl>
+    </div>
+
+
+    <account-selector-v2 account-data="data.accountData" show="func.showAccountSelector" on-account-selected="func.onAccountSelected" show-separate-we-card="data.showSeparateWeCard" ctrl-data="data.selectorCtrlData" amount="data.amount">
+    </account-selector-v2>
+
+    <hj-password-input password-input-option="data.passwordInputOption" password-input-result="data.passwordInputResult" show="func.passwordInputShow" on-load="func.passwordInputLoading" on-succeed="func.passwordInputSucceed" on-failed="func.passwordInputFailed" is-shown="func.passwordInputIsShown">
+    </hj-password-input>
+
+    <div class="p-mask" ng-if="data.isMaskShown">
+        <h2>{{data.maskTitle}}</h2>
+        <p ng-bind-html="data.maskDetail"></p>
+        <div class="funcs"><button class="p-btn p-btn-outline p-btn-block" ng-click="func.onClickCancelMask()">知道了</button></div>
+    </div>
+
+    <loading show-loading="data.showLoading"></loading>
+    <div pop-confirm="" out-value="data.outValue"></div>
+
+</ion-view>
+</body></html>ardNo}}</div>
+                </dd>
+                <dd class="flex px-a px-lt" ng-if="func.getRecvAccount() == data.ACCOUNT_TYPE.OTHER_BANK_CARD || func.getRecvAccount() == data.ACCOUNT_TYPE.FRIENDS">
+                    <div class="item left">收款银行</div>
+                    <div class="item right">{{data.recvAccountData.otherBankAccount.cardInfo.bankName}}</div>
+                </dd>
+                <dd class="flex px-a px-lt">
+                    <div class="item left">付款</div>
+                    <div class="item right" ng-if="func.getPayAccount() == data.ACCOUNT_TYPE.CURRENT_PLUS">
+                        <i class="cplus">活期+</i>
+                    </div>
+                    <div class="item right" ng-if="func.isWeBankAccount(func.getPayAccount()) &amp;&amp; !func.hasWeCardAccount(func.getPayAccount())">
+                        微众卡{{data.mainCard.number | abridgeAccountNumber}}
+                    </div>
+                    <div class="item right" ng-if="func.hasWeCardAccount(func.getPayAccount())">
+                        <i class="wecard-plus-icon" style="margin-top: 11px"></i>
+                    </div>
+                </dd>
+                <dd class="flex">
+                    <div class="item left">金额</div>
+                    <div class="item right">
+                        <span class="p-c-lorange">{{data.amount}}元</span>
+                    </div>
+                </dd>
+                <dd class="px-b trans-blew" ng-if="data.showTransWaringTip">
+                    <p class="">您今日累计转账金额超过30万元，请核实收款方信息，注意资金安全</p>
+                </dd>
+
+                <dd class="{{data.btnClass}}"><button class="p-btn p-btn-block" ng-click="func.onClickConfirmTransOut()">确认转出</button></dd>
+            </dl>
+        </div>
+    </div>
+    <!--付款账户-->
+    <account-selector account-data="data.payAccountData" show="func.showPaymentAccountSelector" hide="func.hidePaymentAccountSelector" on-account-selected="func.onPayAccountSelected" show-separate-we-card="data.showSeparateWeCard">
+    </account-selector>
+
+    <!--收款账户-->
+    <account-selector hide-amount="300" account-data="data.recvAccountData" show="func.showReceivableAccountSelector" hide="func.hideReceivableAccountSelector" bind-card="func.bindCard" on-account-selected="func.onRecvAccountSelected" show-separate-we-card="data.showSeparateWeCard">
+    </account-selector>
+    
+    <hj-password-input password-input-option="data.passwordInputOption" password-input-result="data.passwordInputResult" show="func.passwordInputShow" on-load="func.passwordInputLoading" on-succeed="func.passwordInputSucceed" on-failed="func.passwordInputFailed" is-shown="func.passwordInputIsShown" on-leave-page="func.onLeavePage">
+		</hj-password-input>
+
+    <loading show-loading="data.showLoading"></loading>
+    <div pop-confirm="" out-value="data.outValue"></div>
+
+    <!--<div ng-if="data.test"></div>-->
+
+</ion-view>
+</body></html><script src="../js/directive/charts/structure-float-earning-chart.js"></script>
+        <script src="../js/directive/charts/fund-charts/fund-value-chart.js"></script>
+
+        <!--handpassword-->
+        <script src="../js/directive/handpassword/handpassword-canvas.js"></script>
+        <script src="../js/directive/handpassword/passwordstatus-canvas.js"></script>
+
+        <!--loading-->
+        <script src="../js/directive/loading/loading.js"></script>
+        <!--number-keyboard-input-->
+
+        <!--<script src="../js/directive/number-keyboard-input/number-keyboard-input.js"></script>-->
+
+        <script src="../js/directive/keyboard-input/keyboard-input.js"></script>
+
+        <!--marquee-->
+        <script src="../js/directive/notice-marquee/notice-marquee.js"></script>
+        <script src="../js/directive/social-data/social-data.js"></script>
+
+        <!--bank limit-->
+        <script src="../js/directive/bank-daily-limit/BankDailyLimit.js"></script>
+
+        <!--del-btn-->
+        <script src="../js/directive/del-btn/del-btn.js"></script>
+
+        <!-- 点击上报 -->
+        <script src="../js/directive/click-reporter/click-reporter.js"></script>
+
+        <!-- 将头部封装为directive -->
+        <script src="../js/directive/hj-header/hj-header.js"></script>
+
+        <!-- 页面片封装 -->
+        <script src="../js/directive/hj-page-fragment/hj-page-fragment.js"></script>
+
+        <!--financial-->
+        <script src="../js/service/common/ShoppingShartService.js"></script>
+        <script src="../js/directive/financial/fund-search.js"></script>
+
+        <!--transrecord-->
+        <script src="../js/directive/common/ionAffix.js"></script>
+
+        <!--transrecord-->
+        <script src="../js/directive/countdown-timer/countdown-timer.js"></script>
+
+
+        <!--share-->
+        <script src="../js/directive/common/share.js"></script>
+
+
+        <!--common-banner-->
+        <script src="../js/directive/common-banner/common-banner.js"></script>
+
+        <!--rotation-banner-->
+        <script src="../js/directive/rotation-banner/rotation-banner.js"></script>
+
+        <!--transticket-->
+        <script src="../js/directive/trans-ticket/trans-ticket.js"></script>
+
+		<!--ocr-result.js-->
+		<script src="../js/directive/ocr-result/ocr-result.js"></script>
+        <!--controllers-->
+
+        <script src="../js/controller/ErrorController.js"></script>
+        <script src="../js/controller/InitController.js"></script>
+        <script src="../js/controller/common/SidebarController.js"></script>
+        <!--fixme 测试-->
+        <script src="../js/controller/common/NativeStorageTestController.js"></script>
+
+        <!--首页-资产-controllers-->
+        <script src="../js/controller/asset/HomeController.js"></script>
+        <script src="../js/controller/asset/AssetController.js"></script>
+        <script src="../js/controller/asset/AssetCalendarController.js"></script>
+        <script src="../js/controller/asset/BindCardVerifyPromptController.js"></script>
+        <script src="../js/controller/common/AccountSettingsController.js"></script>
+        <script src="../js/controller/common/PromoController.js"></script>
+        <script src="../js/controller/common/UnbindOpenIDController.js"></script>
+        <script src="../js/controller/asset/IncomeHistoryController.js"></script>
+        <script src="../js/controller/common/HelpController.js"></script>
+        <script src="../js/controller/common/AgreementController.js"></script>
+        <script src="../js/controller/common/InfoPhoneController.js"></script>
+        <script src="../js/controller/common/InfoResetPhoneController.js"></script>
+        <script src="../js/controller/common/BindInfoController.js"></script>
+        <script src="../js/controller/common/ManagePasswordController.js"></script>
+        <script src="../js/controller/common/AnnouncementController.js"></script>
+        <script src="../js/controller/common/BuySignController.js"></script>
+        <script src="../js/controller/common/CardListController.js"></script>
+        <script src="../js/controller/common/WeCardController.js"></script>
+        <script src="../js/controller/common/WebankIntroduceController.js"></script>
+        <script src="../js/controller/common/HomeNoticeController.js"></script>
+        <script src="../js/controller/common/TransLimit1Controller.js"></script>
+        <script src="../js/controller/common/TransLimit2Controller.js"></script>
+        <script src="../js/controller/common/HtmlPieceViewerController.js"></script>
+        <script src="../js/controller/NoticeController.js"></script>
+        <script src="../js/controller/common/InviteController.js"></script>
+        <script src="../js/controller/common/WebankCardFrozenListController.js"></script>
+        <script src="../js/controller/common/FrozenAmountDetailController.js"></script>
+        <script src="../js/controller/common/SnsLeaderboardController.js"></script>
+        <script src="../js/controller/common/HelpNFeedbackController.js"></script>
+        <script src="../js/controller/common/SettingsController.js"></script>
+        <script src="../js/controller/common/AccountSecurityController.js"></script>
+        <script src="../js/controller/common/LossReportCancellationController.js"></script>
+        <script src="../js/controller/common/LossReportController.js"></script>
+
+        <!--收益-controller-->
+        <script src="../js/controller/income/IncomeTimesController.js"></script>
+        <script src="../js/controller/income/IncomeAccumulatedController.js"></script>
+        <script src="../js/controller/income/IncomeDetailController.js"></script>
+        <script src="../js/controller/income/CurrentIncomeDetailController.js"></script>
+        <script src="../js/controller/income/GoldIncomeDetailController.js"></script>
+        <script src="../js/controller/income/StockIncomeDetailController.js"></script>
+        <script src="../js/controller/income/IncomeArrivalController.js"></script>
+
+        <!--理财推荐-->
+        <script src="../js/controller/financial/FinancialHomeMoreController.js"></script>
+
+        <script src="../js/controller/financial/MyFinancialInsuranceController.js"></script>
+        <script src="../js/controller/financial/MyFinancialShortPeroidController.js"></script>
+        <script src="../js/controller/financial/MyFinancialStockController.js"></script>
+        <script src="../js/controller/financial/MyFinancialDepositController.js"></script>
+
+        <script src="../js/controller/financial/MyFinancialGoldControllerV2.js"></script>
+        <script src="../js/controller/financial/MyFinancialStructureController.js"></script>
+        <script src="../js/controller/financial/FinancialCalendarEventListController.js"></script>
+        <script src="../js/controller/financial/FinancialCalendarEventController.js"></script>
+        <script src="../js/controller/financial/FinancialCalendarController.js"></script>
+
+        <!--黄金-->
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentProdDetailController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentMyProdDetailController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentPurchaseControllerV2.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentPurchaseResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentPurchaseRequestResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentRedeemControllerV2.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentRedeemResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentRedeemRequestResultController.js"></script>
+        <script src="../js/controller/financial/gold/fix-time-product/GoldFixTimeProdDetailController.js"></script>
+        <script src="../js/controller/financial/gold/fix-time-product/GoldFixTimeMyProdDetailController.js"></script>
+        <script src="../js/controller/financial/gold/fix-time-product/GoldFixTimePurchaseController.js"></script>
+        <script src="../js/controller/financial/gold/fix-time-product/GoldFixTimePurchaseResultController.js"></script>
+        <script src="../js/controller/financial/gold/fix-time-product/GoldFixTimeRedeemController.js"></script>
+        <script src="../js/controller/financial/gold/fix-time-product/GoldFixTimeRedeemResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentRequestListController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentRequestDetailController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentExtractController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentExtractLocationController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentExtractResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentExtractListController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentExtractDetailController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentInvestmentPurchaseResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentInvestmentListController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentInvestmentDetailController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentRequestCancelResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentExtractCancelResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentInvestmentCancelResultController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldPriceHistoryController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldIncomeHistoryController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldTransHistoryController.js"></script>
+        <script src="../js/controller/financial/gold/current-product/GoldCurrentMoreDetailController.js"></script>
+
+        <!--投资页卡-->
+        <!--<script src="../js/controller/investment/InvestmentHomeController.js"></script>-->
+        <script src="../js/controller/investment/InvestmentArticleController.js"></script>
+        <!--<script src="../js/controller/investment/InvestmentStockController.js"></script>-->
+        <script src="../js/controller/investment/InvestmentGoldController.js"></script>
+        <script src="../js/controller/investment/InvestmentStructureController.js"></script>
+        <script src="../js/controller/investment/StockClassificationController.js"></script>
+
+        <!--投资页卡V3-->
+        <script src="../js/controller/investment/InvestmentHomeV3Controller.js"></script>
+        <script src="../js/controller/investment/InvestmentStockV3Controller.js"></script>
+        <script src="../js/controller/investment/StockHotspotController.js"></script>
+        <script src="../js/controller/investment/StockHotspotDetailController.js"></script>
+        <script src="../js/controller/investment/StockStarController.js"></script>
+        <script src="../js/controller/investment/StockStarDetailController.js"></script>
+        <script src="../js/controller/investment/StockRankingController.js"></script>
+        <script src="../js/controller/investment/StockSubjectController.js"></script>
+        <script src="../js/controller/investment/InvestmentQADetailController.js"></script>
+        <script src="../js/controller/investment/InvestmentQAListController.js"></script>
+
+        <script src="../js/controller/investment/StockPopularLevelController.js"></script>
+        <script src="../js/controller/investment/StockStarLevelController.js"></script>
+
+
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceProductDetailsController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsurancePurchaseController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsurancePurchaseResultController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceRuleController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceMyProductDetailsController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceRedeemController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceReviewController.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceRedeemResultController2.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceAgeUnmatchController.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceIdUnmatchController.js"></script>
+        <script src="../js/controller/financial/insurance/universal-insurance-product/InsuranceProductIntroductionController2.js"></script>
+
+        <!--t+1-->
+        <script src="../js/controller/financial/t-plus-one/TPlusOneDetailController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOneRulesController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOneMoreInfoController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOneTenThousandIncomeController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOnePurchaseController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOnePurchaseResultController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOneRedeemController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOneRedeemResultController.js"></script>
+        <script src="../js/controller/financial/t-plus-one/TPlusOneAgeUnmatchController.js"></script>
+        <!--<script src="../js/controller/financial/t-plus-one/.js"></script>-->
+
+
+        <!--货基-->
+        <script src="../js/controller/financial/monetary/MonetaryMyProductDetailsController.js"></script>
+        <script src="../js/controller/financial/monetary/MonetaryHistoryTenThousandController.js"></script>
+        <script src="../js/controller/financial/monetary/MonetaryMoreDetailsController.js"></script>
+        <script src="../js/controller/financial/monetary/MonetaryHistorySevenDaysIncomeRateController.js"></script>
+        <script src="../js/controller/financial/monetary/MonetaryIncomeRulesController.js"></script>
+        <script src="../js/controller/financial/monetary/MonetaryFrozenListController.js"></script>
+
+        <!--股基-->
+        <script src="../js/controller/financial/stock/StockProductDetailV2Controller.js"></script>
+        <script src="../js/controller/financial/stock/StockMyProductDetailV2Controller.js"></script>
+        <script src="../js/controller/financial/stock/StockPurchaseController.js"></script>
+        <script src="../js/controller/financial/stock/StockPurchaseResultController.js"></script>
+        <script src="../js/controller/financial/stock/StockRedeemController.js"></script>
+        <script src="../js/controller/financial/stock/StockRedeemResultController.js"></script>
+        <script src="../js/controller/financial/stock/StockHistoryCleanValueController.js"></script>
+        <script src="../js/controller/financial/stock/StockTransRulesController.js"></script>
+        <script src="../js/controller/financial/stock/StockAssetDetailController.js"></script>
+        <script src="../js/controller/financial/stock/StockTransRatesController.js"></script>
+        <script src="../js/controller/financial/stock/StockProdManagerController.js"></script>
+        <script src="../js/controller/financial/stock/FundBasicInfoController.js"></script>
+        <script src="../js/controller/financial/stock/FundManagerController.js"></script>
+        <script src="../js/controller/financial/stock/StockMoreDetailController.js"></script>
+        <script src="../js/controller/financial/stock/StockConfirmPurchaseDetailController.js"></script>
+        <script src="../js/controller/financial/stock/StockConfirmRedeemDetailController.js"></script>
+        <script src="../js/controller/financial/stock/StockCancelResultController.js"></script>
+        <script src="../js/controller/financial/stock/FundTradeRecordController.js"></script>
+
+        <!--基金定投-->
+        <script src="../js/controller/financial/stock/fund-aip/FundAipHomeController.js"></script>
+        <script src="../js/controller/financial/stock/fund-aip/FundAipRecordDetailController.js"></script>
+        <script src="../js/controller/financial/stock/fund-aip/FundAipManagementController.js"></script>
+        <script src="../js/controller/financial/stock/fund-aip/FundAipSetPlanController.js"></script>
+        <script src="../js/controller/financial/stock/fund-aip/FundAipSetPlanResultController.js"></script>
+        <script src="../js/controller/financial/stock/fund-aip/FundAipMyDetailController.js"></script>
+        <script src="../js/controller/financial/stock/fund-aip/FundAipGuideController.js"></script>
+        <script src="../js/service/financial/stock/FundAIPService.js"></script>
+
+
+        <!--定期存款-->
+        <script src="../js/controller/financial/deposit/DepositDetailController.js"></script>
+        <script src="../js/controller/financial/deposit/DepositMyDetailController.js"></script>
+        <script src="../js/controller/financial/deposit/DepositPurchaseController.js"></script>
+        <script src="../js/controller/financial/deposit/DepositPurchaseResultController.js"></script>
+        <script src="../js/controller/financial/deposit/DepositRedeemController.js"></script>
+        <script src="../js/controller/financial/deposit/DepositRedeemResultController.js"></script>
+        <script src="../js/controller/financial/deposit/DepositMyProductDetail.js"></script>
+
+
+
+        <!--t+7-->
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenDetailController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenPurchaseController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenPurchaseResultController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenRedeemController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenRedeemResultController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenMyDetailController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenConfirmPurchaseController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenConfirmRedeemController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenCancelResultController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenTransRulesController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenMoreDetailController.js"></script>
+        <script src="../js/controller/financial/t-plus-seven/TPlusSevenFundController.js"></script>
+
+
+        <!--结构化-->
+        <script src="../js/controller/financial/structure/StructurePurchaseController.js"></script>
+        <script src="../js/controller/financial/structure/StructurePurchaseResultController.js"></script>
+
+
+        <!--开户绑卡-->
+        <script src="../js/controller/register/RegisterBindCardController1.js"></script>
+        <script src="../js/controller/register/RegisterBindCardController2.js"></script>
+        <script src="../js/controller/register/RegisterBindCardController3.js"></script>
+        <script src="../js/controller/register/RegisterController1.js"></script>
+        <script src="../js/controller/register/RegisterController2.js"></script>
+        <script src="../js/controller/register/RegisterController3.js"></script>
+        <script src="../js/controller/register/RegisterController4.js"></script>
+        <script src="../js/controller/register/LoginController.js"></script>
+        <script src="../js/controller/register/LoginNoticeController.js"></script>
+        <script src="../js/controller/register/LoginPhoneController.js"></script>
+        <script src="../js/controller/register/BindNewCardController1.js"></script>
+        <script src="../js/controller/register/BindNewCardController2.js"></script>
+        <script src="../js/controller/register/OpenAccoutWithTransResultController.js"></script>
+        <script src="../js/controller/register/RegisterController.js"></script>
+        <script src="../js/controller/register/ActiveUnionResultController.js"></script>
+        <script src="../js/controller/register/CareerSelectController.js"></script>
+        <script src="../js/controller/register/RegisterResultController.js"></script>
+        <script src="../js/controller/register/BindBankCardController.js"></script>
+        <script src="../js/controller/register/BindBankCardResultController.js"></script>
+        <script src="../js/controller/register/BindBankCardOtpController.js"></script>
+		<script src="../js/controller/register/RegisterWithOcrController.js"></script>
+        <script src="../js/controller/register/LoginOtpController.js"></script>
+        <script src="../js/controller/register/AccountInactiveController.js"></script>
+
+        <!--测试-->
+        <script src="../js/controller/TestController.js"></script>
+
+        <!--设置-->
+        <script src="../js/controller/common/ViewCardInfoController.js"></script>
+        <script src="../js/controller/common/AboutController.js"></script>
+        <script src="../js/controller/common/ChangePasswdController.js"></script>
+        <script src="../js/controller/common/ResetPasswdController.js"></script>
+        <script src="../js/controller/common/ResetStrongPasswdController.js"></script>
+
+        <!--<script src="../js/controller/common/RiskAssessmentController.js"></script>-->
+        <!--<script src="../js/controller/common/SettingInfoController.js"></script>-->
+        <script src="../js/controller/common/ShowRiskInfoController.js"></script>
+        <script src="../js/controller/common/MessageCenterController.js"></script>
+        <script src="../js/controller/common/TransRecordControllerV2.js"></script>
+        <script src="../js/controller/common/TransRecordDetailControllerV2.js"></script>
+        <script src="../js/controller/common/TransRecordController.js"></script>
+        <script src="../js/controller/common/TransRecordDetailController.js"></script>
+        <script src="../js/controller/common/TransPlanDetailController.js"></script>
+        <!--收不到OTP-->
+        <script src="../js/controller/common/OtpGuideController.js"></script>
+        <script src="../js/controller/common/OtpLoginGuideController.js"></script>
+
+        <!--转账-->
+        <script src="../js/controller/transfer/TransferHomeController.js"></script>
+        <script src="../js/controller/transfer/TransferInController.js"></script>
+        <script src="../js/controller/transfer/TransferInV2Controller.js"></script>
+        <script src="../js/controller/transfer/UnionPayLimitController.js"></script>
+        <script src="../js/controller/transfer/WeLoanGuideController.js"></script>
+        <script src="../js/controller/transfer/TransferOutControllerV3.js"></script>
+        <script src="../js/controller/transfer/TransferOutControllerV2.js"></script>
+        <script src="../js/controller/transfer/TransferOutController.js"></script>
+        <script src="../js/controller/transfer/TransferOutFriendsSelectorController.js"></script>
+        <script src="../js/controller/transfer/TransferInResultController.js"></script>
+        <script src="../js/controller/transfer/TransferInResultV2Controller.js"></script>
+        <script src="../js/controller/transfer/TransferOutResultController.js"></script>
+        <script src="../js/controller/transfer/PlanControllerV2.js"></script>
+        <script src="../js/controller/transfer/PlanController.js"></script>
+        <script src="../js/controller/transfer/PlanResultController.js"></script>
+        <script src="../js/controller/transfer/SalaryPlanController.js"></script>
+        <script src="../js/controller/transfer/MortgagePlanController.js"></script>
+        <script src="../js/controller/transfer/TaxPlanController.js"></script>
+        <script src="../js/controller/transfer/TaxPlanModifyController.js"></script>
+        <script src="../js/controller/transfer/TaxResultController.js"></script>
+        <script src="../js/controller/transfer/TransferOutAccountSelectorController.js"></script>
+        <script src="../js/controller/transfer/TransferOutAccountSelectorControllerV2.js"></script>
+        <script src="../js/controller/transfer/TransferOutAccountHisEditor.js"></script>
+        <script src="../js/controller/transfer/TransferOtpController.js"></script>
+        <script src="../js/controller/transfer/TransferOutScenePlanController.js"></script>
+        <script src="../js/controller/transfer/RedPacketListController.js"></script>
+        <script src="../js/controller/transfer/TransferPlanListController.js"></script>
+        <script src="../js/controller/transfer/WholesaleTransferController.js"></script>
+        <script src="../js/controller/transfer/WholesaleTransferConfirmController.js"></script>
+        <script src="../js/controller/transfer/WholesaleTransferTipsController.js"></script>
+        <script src="../js/controller/transfer/TransferBalanceController.js"></script>
+        <script src="../js/controller/transfer/ScanErrorController.js"></script>
+        <script src="../js/controller/transfer/BankListController.js"></script>
+        <script src="../js/controller/transfer/TransferHandBookController.js"></script>
+
+        <script src="../js/controller/common/CardRemarkController.js"></script>
+        <script src="../js/service/common/CardRemarkService.js"></script>
+        <script src="../js/service/transfer/TransferOutGrayService.js"></script>
+
+
+        <!--手势密码-->
+        <script src="../js/controller/common/HandPasswordController.js"></script>
+        <script src="../js/controller/common/ChangeHandPasswordController.js"></script>
+
+        <!--消费支付-->
+        <script src="../js/controller/wepay/WePayDetailController.js"></script>
+        <script src="../js/controller/wepay/WePayResultController.js"></script>
+        <script src="../js/controller/wepay/WePayHelpController.js"></script>
+        <script src="../js/controller/wepay/WePayWayDetailController.js"></script>
+
+        <!--新版福利中心-->
+        <script src="../js/controller/welfare/ExpiredWelfareController.js"></script>
+        <script src="../js/controller/welfare/MyWelfareController.js"></script>
+        <script src="../js/controller/welfare/WelfareCenterController.js"></script>
+        <script src="../js/controller/welfare/WelfareDetailController.js"></script>
+
+        <!--we通上海银行-->
+        <script src="../js/controller/wecard/WeCardApplyController.js"></script>
+        <script src="../js/controller/wecard/WeCardEntityListController.js"></script>
+        <script src="../js/controller/wecard/WeCardEntityRecommandController.js"></script>
+        <script src="../js/controller/wecard/WeCardMailController.js"></script>
+        <script src="../js/controller/wecard/WeCardMailSuccController.js"></script>
+        <script src="../js/controller/wecard/WeCardEntityDetailController.js"></script>
+        <script src="../js/controller/wecard/WeCardCareerSelectController.js"></script>
+        <script src="../js/controller/wecard/WeCardCityListController.js"></script>
+        <script src="../js/service/wecard/EntityListService.js"></script>
+        <script src="../js/service/wecard/EntityRecListService.js"></script>
+        <script src="../js/service/wecard/CardListService.js"></script>
+        <script src="../js/controller/wecard/WeCardListController.js"></script>
+        <script src="../js/controller/wecard/WeCardRiskAssessmentController.js"></script>
+        <script src="../js/controller/wecard/WeCardAdvertisementController.js"></script>
+        <script src="../js/controller/wecard/WeCardApplyListController.js"></script>
+        <script src="../js/directive/wecard-risk-assessment/wecard-risk-assessment.js"></script>
+        <script src="../js/service/wecard/RiskAndFitService.js"></script>
+        <script src="../js/directive/wecard-fit-assessment/wecard-fit-assessment.js"></script>
+        <script src="../js/controller/wecard/WeCardApplyControllerV2.js"></script>
+        <script src="../js/controller/wecard/WeCardActivationTipsController.js"></script>
+        <script src="../js/controller/wecard/WeCardWaitForActivatoinController.js"></script>
+
+		<script src="../js/controller/register/CompleteUserInfoController.js"></script>
+		<script src="../js/controller/register/EditUserInfoController.js"></script>
+		<script src="../js/controller/register/ConfirmOcrUserInfoController.js"></script>
+		<script src="../js/directive/career-picker/career-picker.js"></script>
+		<script src="../js/service/register/EditUserInfoService.js"></script>
+
+        <!--财富贷款资格申请-->
+        <script src="../js/controller/pledgeLoan/Apply/PledgeLoanApplyController.js"></script>
+        <script src="../js/controller/pledgeLoan/Apply/PledgeLoanApplyContractInfoController.js"></script>
+        <script src="../js/controller/pledgeLoan/Apply/PledgeLoanResultController.js"></script>
+        <script src="../js/controller/pledgeLoan/Apply/PledgeLoanRenewController.js"></script>
+        <!--根据理财产品申请财富贷款-->
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductInfoController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanInfoController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductConfirmController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanAccountInfoController.js"></script>
+        <script src="../js/controller/pledgeLoan/PledgeLoanOtpController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductResultController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoaSummaryInfoController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanListController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductDetailController.js"></script>
+        <script src="../js/service/pledge/PledgeLoanInfoService.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductListController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductAdditionController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanEarlyRepayListController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanBorrowingRecsController.js"></script>
+        <script src="../js/directive/pledge-info/pledge-info.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanProductRepayResultController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgeLoanRepaymentController.js"></script>
+        <script src="../js/controller/pledgeLoan/Loan/PledgePresentationController.js"></script>
+        <script src="../js/controller/pledgeLoan/PledgeHelpController.js"></script>
+
+
+        <script src="../expose.lib.bundle.js" noyasuo=""></script>
+
+        <script insert-js-here=""></script>
+
+        <script src="../js/app-config.js"></script>
+
+        <script src="../app.bundle.js" noyasuo=""></script>
+
+        <script>
+            console.log("load end");
+            h5TimeRecord && (h5TimeRecord['h5LoadIndexEnd'] = new Date().getTime());
+        </script>
+        <!-- @if ENV='' -->
+        <!--此处是本机调试模拟代码，打包编译时去掉-->
+        <script src="../lib/simulator/default.js"></script>
+        <!-- @endif -->
+
+        <!-- @if DEBUG!=false -->
+        <!--此处是本机调试模拟代码，打包编译时去掉-->
+        <script src="../lib/buoy/buoy.js"></script>
+        <!-- @endif -->
+
+    
+
+
 </body></html>

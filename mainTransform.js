@@ -17,9 +17,14 @@ var debugFilePathArr = [];      //阶段性调试文件
 
 exports.default = main;
 
-function main(src, dst, debugFile) {
+function main(src, dst, param) {
 
-    if (!src || !dst) {
+    var {
+        debugFile,
+        callback
+    } = param;
+
+    if (!src) {
         //不处理
         console.log("参数不齐，不干活");
         return;
@@ -33,107 +38,45 @@ function main(src, dst, debugFile) {
     }
 
     // console.log(":", fs.existsSync(jqueryUrl));
-    mainTransfer();
+    mainTransfer(callback);
 }
 
-function mainTransfer() {
+function mainTransfer(callback) {
+    callback = callback || function () {
+
+        }
 
     //1.加载页面
     loadMainPage(function (window) {
         var $ = window.$;
         var document = window.document;
-        // var allElement = $("*");
-        // // logInfo(allElement.length, aElement.nodeName)
-        // // for (var i in aElement) {
-        // //     // logInfo(i)
-        // //     // console.log(i, typeof (aElement[i].))
-        // // }
-        // var obj = {};
-        // var atrributeObj = {};
-        // var nodeTypeMap = {};
-        // for (var i in allElement) {
-        //     var aElement = allElement.get(i);
-        //     var {
-        //         nodeName,
-        //         attributes,
-        //         nodeType,
-        //     } = aElement;
-        //
-        //     // if (nodeType) {
-        //     //     nodeTypeMap[nodeType] = true;
-        //     // }
-        //     // console.log(nodeType)
-        //
-        //     if (nodeName) {
-        //         obj[nodeName] = true;
-        //         if (typeof (nodeName) == "string" && nodeName) {
-        //             //all nodeName
-        //             // logInfo(jsdom.nodeLocation(allElement[20]))
-        //             // logInfo(aElement.nodeType)
-        //
-        //
-        //             // logInfo("======", nodeName);
-        //             for (var j in attributes) {
-        //                 var {name, value} = attributes[j];
-        //                 if (typeof (name) == "string" && name) {
-        //                     // logInfo(name, value)
-        //                     atrributeObj[name] = true;
-        //                 }
-        //
-        //             }
-        //         }
-        //     }
-        //
-        //
-        // }
-        // logInfo(Object.keys((obj)))
-        // logInfo(Object.keys((atrributeObj)))
-        // logInfo("nodeType", Object.keys((nodeTypeMap)))
-        // logInfo("allElement", allElement.length);
-        // var allContents = $("body").children();
-        // logInfo("allContents", allContents.length)
-        // var test = $(":contains('{{')");
-        // logInfo(test.length)
-        // for (var i in test) {
-        //     var {
-        //         nodeName,
-        //         attributes,
-        //         nodeType,
-        //     } = test[i];
-        //     if (nodeName && typeof (nodeName) == "string"){
-        //         // console.log(nodeName, attributes, nodeType, jsdom.nodeLocation(test[i]))
-        //     }
-        //
-        // }
 
-
-        // var document = window.document;
-        // var test = document.querySelectorAll();
-        // logInfo(test.length)
-
-        // logInfo("1",document, test)
         //1. 获取节点信息
         var {
             elementNodeArr,
             textNodeArr
         } = getElementTypeArr($("body")[0]);
-        logInfo(elementNodeArr.length)
-        logInfo(textNodeArr.length)
+        // logInfo(elementNodeArr.length)
+        // logInfo(textNodeArr.length)
 
         for (var i in textNodeArr) {
             var {
                 nodeValue,
                 innerHtml
             } = textNodeArr[i];
-            if (nodeValue && nodeValue.trim()) {
-                logInfo(typeof(nodeValue), nodeValue)
-            }
+            // if (nodeValue && nodeValue.trim()) {
+            //     logInfo(typeof(nodeValue), nodeValue)
+            // }
 
         }
 
 
-        precessTextNode(textNodeArr, {$});
+        // precessTextNode(textNodeArr, {$});
 
+        var nameMap = processElementNode(elementNodeArr, {$});
+        // console.log(nameMap);
+
+        callback(nameMap);
 
         generateTest(document)
     })
@@ -144,7 +87,9 @@ function generateTest(window) {
     // var html = parse5.serialize($("body")[0]);
 
 
-    fs.writeFile(dstFilePath, html, "utf8");
+    if (dstFilePath) {
+        fs.writeFile(dstFilePath, html, "utf8");
+    }
 
 
 }
@@ -296,4 +241,27 @@ function precessTextNode(textNodeArr, param) {
             }
         }
     }
+}
+
+function processElementNode(elementNodeArr, param) {
+
+    var {
+        $
+    } = param;
+
+    var nameMap = {};
+    for (var i in elementNodeArr) {
+        var node = elementNodeArr[i];
+        var {
+            attributes
+        } = node;
+
+        for (var j = 0, len = attributes.length; j < len; j++) {
+            var {
+                name, value
+            } = attributes[j];
+            nameMap[name] = true;
+        }
+    }
+    return nameMap;
 }
